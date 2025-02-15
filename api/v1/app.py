@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Flask app"""
+
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
@@ -9,15 +10,12 @@ app = Flask(__name__)
 
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def teardown_db(exception):
     """closes the current db session"""
 
     storage.close()
-
-@app.route('/test', methods=['GET'])
-def test():
-    return "Flask is working"
 
 
 if __name__ == "__main__":
