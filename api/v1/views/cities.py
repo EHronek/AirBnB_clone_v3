@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Restful actions for City"""
+""""""
 from models.city import City
 from models.state import State
 from api.v1.views import app_views
@@ -31,7 +31,7 @@ def delete_city_obj(city_id):
     """Deletes a specifiec City depending on its id"""
     city = storage.get(City, city_id)
     if not city:
-        abort(404)
+        return jsonify({"error": "Not found"}), 404
     storage.delete(city)
     storage.save()
     return jsonify({}), 200
@@ -43,7 +43,7 @@ def create_city(state_id):
     """Creates a City object under provided State with state_id"""
     state = storage.get(State, state_id)
     if not state:
-        abort(404)
+        return jsonify({"error": "Not found"}), 404
     data = request.get_json()
     if not data:
         return jsonify({"error": "Not a JSON"}), 400
@@ -60,7 +60,7 @@ def update_city(city_id):
     """Updates a specific City object by its ID"""
     city_obj = storage.get(City, city_id)
     if not city_obj:
-        abort(404)
+        return jsonify({"error": "Not found"})
     new_data = request.get_json()
     if not new_data:
         return jsonify({"error", "Not a JSON"}, 400)
