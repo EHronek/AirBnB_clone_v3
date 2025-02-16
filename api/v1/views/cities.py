@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""Restful actions for City"""
 from models.city import City
 from models.state import State
 from api.v1.views import app_views
