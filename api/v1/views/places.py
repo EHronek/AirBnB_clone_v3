@@ -9,7 +9,7 @@ from api.v1.views import app_views
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'], strict_slashes=False)
-def get__all_places(city_id):
+def get_all_places(city_id):
     """Gets all Place objects in a specific City"""
     city_obj = storage.get(City, city_id)
     if not city_obj:
