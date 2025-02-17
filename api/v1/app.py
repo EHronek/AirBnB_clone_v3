@@ -14,6 +14,7 @@ app.register_blueprint(app_views)
 
 CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
+
 @app.route('/api/v1/nop', strict_slashes=False)
 def error_404():
     """Handles 404 errors Returns a json formatted 404 status code"""
